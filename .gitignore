@@ -1,6 +1,8 @@
 *.class
 target
 bin
+build.gradle
+build
 
 # Package Files #
 *.jar
