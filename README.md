@@ -5,12 +5,10 @@ OBD-II Java API
 
 ## NOTICE
 
-**I am no longer involved in any way with OBD and related activities, so don't expect my feedback on issues, pull-requests and most of all, email.**
+**This project is no longer fully maintained.**
 
-I can't even remember when I first picked this project but it was fun as hell in the beginning. Now, years went by and a few contributors jumped in with amazing, smart features and fixes. To those fine people, **Thank you**! This is your _baby_, too.
-
-Now, it's time to say goodbye.
-Pires
+*I have forked the project and will work on it as time permits, but it is not fully supported. I am using it for my own private applications.*
+Roque
 
 [![Build status](https://circleci.com/gh/pires/obd-java-api.svg?style=svg)](https://circleci.com/gh/pires/obd-java-api)
 
@@ -25,8 +23,8 @@ Before opening an issue or using this library, please take a look at the followi
 
 ### Requisites ###
 
-* JDK 7
-* Maven 3.1 or newer
+* JDK 1.8 or newer
+* Maven 3.3.9 or newer
 
 ### Compile, package and install locally ###
 
@@ -39,7 +37,7 @@ mvn clean install
 ### Maven ###
 ```
 <dependency>
-  <groupId>com.github.pires</groupId>
+  <groupId>com.github.roq3</groupId>
   <artifactId>obd-java-api</artifactId>
   <version>1.0</version>
 </dependency>
@@ -48,7 +46,7 @@ mvn clean install
 ### Gradle ###
 ```
 dependencies {
-    compile 'com.github.pires:obd-java-api:1.0'
+    compile 'com.github.roq3:obd-java-api:2.0'
 }
 ```
 
