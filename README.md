@@ -34,19 +34,17 @@ mvn clean install
 
 ## Usage ##
 
-### Maven ###
+Run git clone in root folder of your application to get the project locally
+
 ```
-<dependency>
-  <groupId>com.github.roq3</groupId>
-  <artifactId>obd-java-api</artifactId>
-  <version>1.0</version>
-</dependency>
+cd /path/to/your/project
+git clone git@github.com:roq3/obd-java-api.git
 ```
 
 ### Gradle ###
 ```
 dependencies {
-    compile 'com.github.roq3:obd-java-api:2.0'
+    implementation project(':obd-java-api')
 }
 ```
 
