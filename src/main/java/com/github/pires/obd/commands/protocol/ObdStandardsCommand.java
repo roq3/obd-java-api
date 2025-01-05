@@ -5,11 +5,16 @@ import com.github.pires.obd.enums.ObdStandards;
 
 import java.util.Objects;
 
-public class OBDStandardsCommand extends ObdCommand {
+/**
+ * OBD standards.
+ *
+ * @author roque
+ */
+public class ObdStandardsCommand extends ObdCommand {
 
     private ObdStandards obdStandard = ObdStandards.UNKNOWN;
 
-    public OBDStandardsCommand() {
+    public ObdStandardsCommand() {
         super("01 1C");
     }
 
