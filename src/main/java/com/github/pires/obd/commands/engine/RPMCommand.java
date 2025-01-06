@@ -47,9 +47,10 @@ public class RPMCommand extends ObdCommand {
     }
 
     /** {@inheritDoc} */
+    @SuppressWarnings("DefaultLocale")
     @Override
     public String getFormattedResult() {
-        return String.format("%d%s", rpm, getResultUnit());
+        return String.format("%d %s", rpm, getResultUnit());
     }
 
     /** {@inheritDoc} */

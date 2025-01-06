@@ -34,12 +34,12 @@ public enum ObdProtocols {
     SAE_J1850_VPW('2'),
 
     /**
-     * 5 baud init
+     * 5 kbaud init
      */
     ISO_9141_2('3'),
 
     /**
-     * 5 baud init
+     * 5 kbaud init
      */
     ISO_14230_4_KWP('4'),
 

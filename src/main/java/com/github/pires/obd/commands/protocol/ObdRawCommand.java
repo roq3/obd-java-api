@@ -44,12 +44,12 @@ public class ObdRawCommand extends ObdProtocolCommand {
 
         }
 
-        String returnResult = "Custom command: '" + getCommandMode();
+        String returnResult = "Custom command: \"" + getCommandMode();
 
         if (commandPID == null) {
-            return returnResult + "'";
+            return returnResult + "\"";
         } else {
-            return returnResult + " " + getCommandPID() + "'";
+            return returnResult + " " + getCommandPID() + "\"";
         }
     }
 

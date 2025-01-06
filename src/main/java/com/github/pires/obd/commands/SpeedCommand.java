@@ -77,6 +77,7 @@ public class SpeedCommand extends ObdCommand implements SystemOfUnits {
      *
      * @return a {@link java.lang.String} object.
      */
+    @SuppressWarnings("DefaultLocale")
     public String getFormattedResult() {
         return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), getResultUnit())
                 : String.format("%d%s", getMetricSpeed(), getResultUnit());

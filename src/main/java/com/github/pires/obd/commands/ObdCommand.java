@@ -3,7 +3,6 @@
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *     http://www.apache.org/licenses/LICENSE-2.0
- *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -18,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
@@ -150,10 +150,10 @@ public abstract class ObdCommand {
     protected abstract void performCalculations();
 
 
-    private static Pattern WHITESPACE_PATTERN = Pattern.compile("\\s");
-    private static Pattern BUSINIT_PATTERN = Pattern.compile("(BUS INIT)|(BUSINIT)|(\\.)");
-    private static Pattern SEARCHING_PATTERN = Pattern.compile("SEARCHING");
-    private static Pattern DIGITS_LETTERS_PATTERN = Pattern.compile("([0-9A-F])+");
+    private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s");
+    private static final Pattern BUSINIT_PATTERN = Pattern.compile("(BUS INIT)|(BUSINIT)|(\\.)");
+    private static final Pattern SEARCHING_PATTERN = Pattern.compile("SEARCHING");
+    private static final Pattern DIGITS_LETTERS_PATTERN = Pattern.compile("([0-9A-F])+");
 
     protected String replaceAll(Pattern pattern, String input, String replacement) {
         return pattern.matcher(input).replaceAll(replacement);
@@ -234,9 +234,7 @@ public abstract class ObdCommand {
             try {
                 messageError = errorClass.newInstance();
                 messageError.setCommand(this.cmd);
-            } catch (InstantiationException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
+            } catch (InstantiationException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
 
@@ -331,7 +329,6 @@ public abstract class ObdCommand {
         this.responseDelayInMs = responseDelayInMs;
     }
 
-    //fixme resultunit
     /**
      * <p>Getter for the field <code>start</code>.</p>
      *
@@ -398,7 +395,7 @@ public abstract class ObdCommand {
 
         ObdCommand that = (ObdCommand) o;
 
-        return cmd != null ? cmd.equals(that.cmd) : that.cmd == null;
+        return Objects.equals(cmd, that.cmd);
     }
 
     @Override
