@@ -20,8 +20,9 @@ public class FuelSystemStatusCommand extends ObdCommand {
 
     @Override
     public String getFormattedResult() {
-        return "Fuel System Status - Bank 1: " + getStatusDescription(statusBank1) +
-                ", Bank 2: " + getStatusDescription(statusBank2);
+        return "Bank 1: " + getStatusDescription(statusBank1) +
+                "\n" +
+                "Bank 2: " + getStatusDescription(statusBank2);
     }
 
     @Override
