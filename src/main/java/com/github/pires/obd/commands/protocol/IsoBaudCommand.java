@@ -2,6 +2,8 @@ package com.github.pires.obd.commands.protocol;
 
 import com.github.pires.obd.enums.ObdIsoBaudRates;
 
+import java.util.Objects;
+
 /**
  * Set ISO Baud
  *
@@ -26,7 +28,13 @@ public class IsoBaudCommand extends ObdProtocolCommand {
     @Override
     public String getFormattedResult() {
 
-        double result = Double.parseDouble(getResult());
+        String rawResult = getResult();
+
+        if (Objects.equals(rawResult, "OK")) {
+            rawResult = rate.getName();
+        }
+
+        double result = Double.parseDouble(rawResult);
 
         return String.format("%.1f %s", result / 1000.0, getResultUnit());
     }

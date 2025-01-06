@@ -10,30 +10,32 @@ public enum ObdIsoBaudRates {
     /**
      * rate 10400
      */
-    RATE_10(10),
+    RATE_10(10, "10400"),
 
     /**
-     * rate 10400
+     * rate 4800
      */
-    RATE_48(48),
+    RATE_48(48, "4800"),
 
     /**
-     * rate 10400
+     * rate 9600
      */
-    RATE_96(96);
+    RATE_96(96, "9600");
 
     private final int value;
 
-    ObdIsoBaudRates(int value) {
+    private final String name;
+
+    ObdIsoBaudRates(int value, String name) {
         this.value = value;
+        this.name = name;
     }
 
-    /**
-     * <p>Getter for the field <code>value</code>.</p>
-     *
-     * @return a char.
-     */
     public int getValue() {
         return value;
+    }
+
+    public String getName() {
+        return name;
     }
 }
