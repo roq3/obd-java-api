@@ -26,6 +26,8 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  */
 public class DescribeProtocolCommand extends ObdProtocolCommand {
 
+    private String protocolName;
+
     /**
      * <p>Constructor for DescribeProtocolCommand.</p>
      */
@@ -36,7 +38,42 @@ public class DescribeProtocolCommand extends ObdProtocolCommand {
     /** {@inheritDoc} */
     @Override
     public String getFormattedResult() {
-        return getResult();
+        return protocolName;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public String getCalculatedResult() {
+        return protocolName;
+    }
+
+    /**
+     * <p>performCalculations.</p>
+     */
+    protected void performCalculations() {
+        protocolName = decodeProtocolResponse(getResult());
+    }
+
+    public static String decodeProtocolResponse(String rawResponse) {
+
+        if (rawResponse.endsWith(">")) {
+            rawResponse = rawResponse.substring(0, rawResponse.length() - 1).trim();
+        }
+
+        rawResponse = rawResponse.replaceAll("\\s+", "").trim();
+
+        StringBuilder decodedText = new StringBuilder();
+        for (int i = 0; i < rawResponse.length(); i += 2) {
+            if (i + 2 <= rawResponse.length()) {
+                String hex = rawResponse.substring(i, i + 2);
+                try {
+                    int charCode = Integer.parseInt(hex, 16);
+                    decodedText.append((char) charCode);
+                } catch (NumberFormatException ignored) {
+                }
+            }
+        }
+        return decodedText.toString().trim();
     }
 
     /** {@inheritDoc} */
@@ -44,5 +81,4 @@ public class DescribeProtocolCommand extends ObdProtocolCommand {
     public String getName() {
         return AvailableCommandNames.DESCRIBE_PROTOCOL.getValue();
     }
-
 }
