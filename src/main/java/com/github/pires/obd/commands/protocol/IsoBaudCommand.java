@@ -22,9 +22,13 @@ public class IsoBaudCommand extends ObdProtocolCommand {
     }
 
     /** {@inheritDoc} */
+    @SuppressWarnings("DefaultLocale")
     @Override
     public String getFormattedResult() {
-        return getResult();
+
+        double result = Double.parseDouble(getResult());
+
+        return String.format("%.1f %s", result / 1000.0, getResultUnit());
     }
 
     /** {@inheritDoc} */
@@ -33,4 +37,7 @@ public class IsoBaudCommand extends ObdProtocolCommand {
         return "ISO Baud " + rate.name();
     }
 
+    public String getResultUnit() {
+        return "kbaud";
+    }
 }
