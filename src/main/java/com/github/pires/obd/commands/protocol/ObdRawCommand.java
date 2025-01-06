@@ -35,7 +35,22 @@ public class ObdRawCommand extends ObdProtocolCommand {
     /** {@inheritDoc} */
     @Override
     public String getName() {
-        return "Custom command " + getCommandPID();
+
+        String commandPID = null;
+
+        try {
+            commandPID = getCommandPID();
+        } catch (Exception ignored) {
+
+        }
+
+        String returnResult = "Custom command: '" + getCommandMode();
+
+        if (commandPID == null) {
+            return returnResult + "'";
+        } else {
+            return returnResult + " " + getCommandPID() + "'";
+        }
     }
 
 }
