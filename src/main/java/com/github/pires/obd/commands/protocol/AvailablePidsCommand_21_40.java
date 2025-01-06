@@ -12,6 +12,8 @@
  */
 package com.github.pires.obd.commands.protocol;
 
+import static com.github.pires.obd.enums.AvailablePIDsRanges.PIDS_21_TO_40;
+
 import com.github.pires.obd.enums.AvailableCommandNames;
 
 /**
@@ -20,11 +22,13 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  */
 public class AvailablePidsCommand_21_40 extends AvailablePidsCommand {
 
+    static String pid = PIDS_21_TO_40.getValue();
+
     /**
      * Default ctor.
      */
     public AvailablePidsCommand_21_40() {
-        super("01 20");
+        super("01 " + pid);
     }
 
     /**

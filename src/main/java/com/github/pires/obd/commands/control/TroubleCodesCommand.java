@@ -88,7 +88,7 @@ public class TroubleCodesCommand extends ObdCommand {
                 return;
             }
             codes.append(dtc);
-            codes.append('\n');
+//            codes.append('\n');
         }
     }
 
