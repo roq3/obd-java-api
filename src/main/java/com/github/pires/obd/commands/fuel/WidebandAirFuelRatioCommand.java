@@ -33,13 +33,14 @@ public class WidebandAirFuelRatioCommand extends ObdCommand {
     /** {@inheritDoc} */
     @Override
     protected void performCalculations() {
-        // ignore first two bytes [01 44] of the response
+        // ignore first two bytes [01 34] of the response
         float A = buffer.get(2);
         float B = buffer.get(3);
         wafr = (((A * 256) + B) / 32768) * 14.7f;//((A*256)+B)/32768
     }
 
     /** {@inheritDoc} */
+    @SuppressWarnings("DefaultLocale")
     @Override
     public String getFormattedResult() {
         return String.format("%.2f", getWidebandAirFuelRatio()) + ":1 AFR";
